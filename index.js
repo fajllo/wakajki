@@ -2,6 +2,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const Place = require("./models/place");
 
 const methodOverride = require("method-override");
 
@@ -24,9 +25,16 @@ async function main() {
   );
 }
 
-app.get('/', (req, res) => {
-    res.render("home")
-})
+app.get("/", (req, res) => {
+  res.render("home");
+});
+
+app.get("/place", async (req, res) => {
+  const place = new Place({ title: "test title" });
+  await place.save();
+  console.log(place);
+  res.send("new cam preaetd");
+});
 
 // express server is on port 3000 - >  localhost:3000
 app.listen(3000, () => {
