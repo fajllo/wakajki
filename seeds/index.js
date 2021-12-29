@@ -1,5 +1,6 @@
 const Place = require("../models/place");
 const cities = require("./cities");
+const { places, descriptors } = require("./seedHelper");
 // mongoose and mongo set up data
 const mongoose = require("mongoose");
 main()
@@ -19,7 +20,9 @@ async function clearDB() {
 }
 
 async function seedDB() {
-  for (let city in cities) {
+  for (let city of cities) {
+    // const random1000 = Math.floor(Math.random() * ślength(descriptors));
+    // console.log(city);
     const place = new Place({ title: city.city });
 
     await place.save();
@@ -28,5 +31,6 @@ async function seedDB() {
 
 clearDB();
 seedDB().then(() => {
+  console.log("connection closed");
   mongoose.connection.close();
 });

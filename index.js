@@ -29,13 +29,26 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
-app.get("/place", async (req, res) => {
-  const place = new Place({ title: "test title" });
-  await place.save();
-  console.log(place);
-  res.send("new cam preaetd");
+app.get("/places", async (req, res) => {
+  const places = await Place.find({});
+  res.render("places/index", { places });
 });
 
+app.get("/places/new", async (req, res) => {
+  res.render("places/new");
+});
+
+app.post("/places/", async (req, res) => {
+  const { title } = req.body;
+  const place = new Place({ title });
+  await place.save();
+  res.redirect(`places/${place.id}`);
+});
+app.get("/places/:id", async (req, res) => {
+  const { id } = req.params;
+  const place = await Place.findById(id);
+  res.render("places/show", { place });
+});
 // express server is on port 3000 - >  localhost:3000
 app.listen(3000, () => {
   console.log(">> listening on port 3000");

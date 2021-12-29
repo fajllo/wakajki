@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All places</title>
+  </head>
+  <body>
+    <h1>all campgrounds</h1>
+    <a href="/places/new"> create new</a>
+    <ul>
+      <% for (let place of places ){ %>
+      <li>
+        <%= place.title %> => <a href="/places/<%= place.id %> "> details</a>
+      </li>
+      <%} %>
+    </ul>
+  </body>
+</html>
