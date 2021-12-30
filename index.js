@@ -4,6 +4,7 @@ const app = express();
 const path = require("path");
 const Place = require("./models/place");
 const morgan = require("morgan");
+const ejsMate = require("ejs-mate");
 
 const methodOverride = require("method-override");
 
@@ -13,6 +14,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+
+app.engine("ejs", ejsMate);
 
 // mongoose and mongo set up data
 const mongoose = require("mongoose");

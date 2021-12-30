@@ -1,30 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit place</title>
-  </head>
+<% layout('layouts/boilerplate') %>
 
-  <body>
-    <h1>Edit Place</h1>
-    <form action="/places/<%=place._id%>?_method=PUT" method="POST">
-      <div>
-        <label for="title">Title</label>
-        <input
-          type="text"
-          id="title"
-          name="place[title]"
-          value="<%=place.title %>"
-        />
-      </div>
+<h1>Edit Place</h1>
+<form action="/places/<%=place._id%>?_method=PUT" method="POST">
+  <div>
+    <label for="title">Title</label>
+    <input
+      type="text"
+      id="title"
+      name="place[title]"
+      value="<%=place.title %>"
+    />
+  </div>
 
-      <button>Update this place</button>
-    </form>
-    <form action="/places/<%=place._id%>?_method=DELETE" method="POST">
-      <button>Delete this place</button>
-    </form>
+  <button>Update this place</button>
+</form>
+<form action="/places/<%=place._id%>?_method=DELETE" method="POST">
+  <button>Delete this place</button>
+</form>
 
-    <a href="/places/<%= place.id%>">Back To <%= place.title%>"</a>
-  </body>
-</html>
+<a href="/places/<%= place.id%>">Back To <%= place.title%>"</a>
