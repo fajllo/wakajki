@@ -3,9 +3,12 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const Place = require("./models/place");
+const morgan = require("morgan");
 
 const methodOverride = require("method-override");
 
+// middle wears
+app.use(morgan("tiny"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.set("views", path.join(__dirname, "views"));

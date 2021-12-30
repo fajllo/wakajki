@@ -20,12 +20,15 @@ async function clearDB() {
 }
 
 async function seedDB() {
+  let i = 0;
   for (let city of cities) {
     // const random1000 = Math.floor(Math.random() * ślength(descriptors));
     // console.log(city);
     const place = new Place({ title: city.city });
 
     await place.save();
+    i++;
+    if (i === 50) break;
   }
 }
 
