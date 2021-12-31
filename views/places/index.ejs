@@ -1,5 +1,6 @@
 <% layout('layouts/boilerplate') %>
 <h1>places</h1>
+<a href="/places/new">create new</a>
 <ul>
   <% for (let place of places ){ %>
   <li><%= place.title %> => <a href="/places/<%= place.id %> "> details</a></li>
